@@ -1,11 +1,14 @@
-from app import app, get_data
+from app import app, get_data, registration
 from threading import Thread
 from parser import main_parser
+import os
 
 def run_server():
 	app.run('0.0.0.0', 6124)
 
 if __name__ == "__main__":
+	if not os.path.exists('config.json'):
+		registration()
 	server_thread = Thread(target=run_server)
 	server_thread.setDaemon(True)
 	server_thread.start()

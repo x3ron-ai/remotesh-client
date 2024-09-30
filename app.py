@@ -25,9 +25,6 @@ def get_data():
 
 @app.route('/')
 def main():
-	if not os.path.exists('config.json'):
-		registration()
-
 	return json.dumps(get_data())
 
 if __name__ == "__main__":
