@@ -1,2 +1,6 @@
 __pycache__
 *.json
+Include
+Lib
+Scripts
+pyvenv.cfg
