@@ -11,12 +11,9 @@ def run_server():
 if __name__ == "__main__":
 	if not os.path.exists('config.json'):
 		registration()
-	server_thread = Thread(target=run_server)
-	server_thread.setDaemon(True)
-	server_thread.start()
 
 	parser_thread = Thread(target=main_parser, args=(get_data(),))
 	parser_thread.setDaemon(True)
 	parser_thread.start()
-	while True:
-		pass
+
+	run_server()

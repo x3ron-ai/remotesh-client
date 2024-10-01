@@ -23,41 +23,53 @@
 		</div>
 	</header>
 	<div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close" id="close">&times;</span>
-            <h2 id="modalTitle">Task info</h2>
-            <p id="modalCommand">task info</p>
-            <p id="modalResponse">task info</p>
-        </div>
-    </div>
+		<div class="modal-content">
+			<span class="close" id="close">&times;</span>
+			<h2 id="modalTitle">Task info</h2>
+			<p>Command:</p>
+			<div class="modal-text-container">
+				<p id="modalCommand">task info</p>
+			</div>
+			<p>Response:</p>
+			<div class="modal-text-container">
+				<p></p>
+				<p id="modalResponse">task info</p>
+			</div>
+		</div>
+	</div>
 	<div class="main">
 		<p>Request history</p>
 		<div class="table-container" id="table-container">
 			<table class="task-container">
 				<tbody>
-					<tr>
+					<tr id="tableHeaders">
 						<th>ID</th>
-						<th>COMMAND</th>
+						<th class="bigTableData">COMMAND</th>
 						<th>USER</th>
 						<th>IS_FAST</th>
 						<th>FAST_ID</th>
-						<th>DATE</th>
+						<th class="bigTableData">DATE</th>
 						<th>STATUS</th>
-						<th>RESPONSE</th>
+						<th class="bigTableData">RESPONSE</th>
 					</tr>
 					{% for i in task_history %}
 					<tr>
-						{% for j in i %}
-						<td>{{ j }}</td>
-						{% endfor %}
+						<td>{{ i[0] }}</td>
+						<td class="bigTableData">{{ i[1] }}</td>
+						<td>{{ i[2] }}</td>
+						<td>{{ i[3] }}</td>
+						<td >{{ i[4] }}</td>
+						<td class="bigTableData">{{ i[5] }}</td>
+						<td>{{ i[6] }}</td>
+						<td class="bigTableData">{{ i[7] }}</td>
 					</tr>					
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<script>
-    
+	<script src="{{ url_for('static', filename='scripts/main.js') }}">
+	
 	</script>
 </body>
 </html>

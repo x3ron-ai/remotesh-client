@@ -8,10 +8,12 @@ body {
 }
 
 .table-container {
+	padding:20px;
+	border: 3px solid white;
+	border-radius: 15px;
 	max-height: 500px;
-	width: 100%;
+	max-width: 100%;
 	overflow-y: scroll;
-	padding:0;
 	scrollbar-width: none;
 	scrollbar-color: white rgba(0,0,0,0);
 }
@@ -30,21 +32,22 @@ body {
 	text-align: center;
 	border: 1px solid black;
 	white-space: nowrap;
-	max-width: 150px;  /* Максимальная ширина ячейки */
+	max-width: 180px;  /* Максимальная ширина ячейки */
 	overflow: hidden;   /* Скрытие переполнения */
 	text-overflow: ellipsis;  /* Появление многоточия */
 	transition: transform 0.3s ease;
 }
 
-.task-container tr:hover {
-	background-color: #bec;
+.bigTableData {
+	display: table-cell;
 }
 
 .task-container th {
-	background-color: #b0e0e6;
+
 }
 
 .main {
+
 	padding: 0 60px;
 }
 
@@ -65,24 +68,49 @@ body {
 	background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
 	justify-content: center;
 	align-items: center;
+	font-family: "Orbitron", sans-serif;
 }
 
 .modal-content {
 	background-color: #fff;
 	padding: 20px;
 	border-radius: 5px;
-	width: 300px;
-	text-align: center;
+	max-width: 70%;
+	word-break: break-word;
 }
+
 .close {
 	cursor: pointer;
 	color: red;
 	font-weight: bold;
 }
 
-		
+.modal-text-container {
+	display: flex;
+	background-color: black;
+	color: white;
+	padding:12px;
+	font-family: Consolas;
+	padding-right: 30px;
+}
+
+.modal-text-container p {
+	margin: 0;
+	padding: 0;
+}
+
+@media screen and (max-width: 1200px) {
+	.task-container td, th {
+		max-width: 100px;
+	}
+}
+
 @media screen and (orientation: portrait) {
+	.bigTableData {
+		display: none;
+	}
 	.main {
-		padding: 0;
+
+		padding: 0 10px;
 	}
 }
