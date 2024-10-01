@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+	<title>RemoteProfile</title>
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+			<a><h1 class="logo-name">RemoteSH</h1></a>
+			<nav class="nav">
+				<ul>
+					<li><a href="https://shh.stariybog.ru/">RSH</a></li>
+					<li><a href="/">Stats</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <h2 id="modalTitle">Task info</h2>
+            <p id="modalCommand">task info</p>
+            <p id="modalResponse">task info</p>
+        </div>
+    </div>
+	<div class="main">
+		<p>Request history</p>
+		<div class="table-container" id="table-container">
+			<table class="task-container">
+				<tbody>
+					<tr>
+						<th>ID</th>
+						<th>COMMAND</th>
+						<th>USER</th>
+						<th>IS_FAST</th>
+						<th>FAST_ID</th>
+						<th>DATE</th>
+						<th>STATUS</th>
+						<th>RESPONSE</th>
+					</tr>
+					{% for i in task_history %}
+					<tr>
+						{% for j in i %}
+						<td>{{ j }}</td>
+						{% endfor %}
+					</tr>					
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+    
+	</script>
+</body>
+</html>

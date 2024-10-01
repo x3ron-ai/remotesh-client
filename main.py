@@ -3,7 +3,7 @@ from threading import Thread
 from parser import main_parser
 import os, webbrowser
 
-webbrowser.open('http://127.0.0.1:6124', new=0, autoraise=True)
+#webbrowser.open('http://127.0.0.1:6124', new=0, autoraise=True)
 
 def run_server():
 	app.run('0.0.0.0', 6124)

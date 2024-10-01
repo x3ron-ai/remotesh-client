@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, url_for, redirect
 import requests
 import os, json, re, uuid
 import socket
@@ -23,11 +23,20 @@ def get_data():
 		data = json.loads(f.read())
 	return data
 
+def get_tasks_history():
+	r = requests.get('https://shh.stariybog.ru/task-history?auth_key={}'.format(get_data()['code']))
+	return json.loads(r.content)	
+
+@app.route('/favicon.ico')
+def favicon():
+	return redirect(url_for('static', filename="favicon.png"))
+
 @app.route('/')
 def main():
-	return json.dumps(get_data())
+	if not os.path.exists('config.json'):
+		registration()
+
+	return render_template('main.html', auth_data=get_data(), task_history=get_tasks_history())
 
 if __name__ == "__main__":
 	app.run('0.0.0.0', 6124)
-else:
-	print(__name__)

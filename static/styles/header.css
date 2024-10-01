@@ -1,0 +1,43 @@
+.header {  
+    font-family: "Orbitron", sans-serif;
+    background-color: rgba(0,0,0,.4);
+    color: white;
+}
+
+.logo-name {
+    font-size: 24px;
+    margin: 14px 0px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav li {
+    margin-left: 20px;
+}
+
+.nav a {
+    color: white;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
