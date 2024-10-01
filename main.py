@@ -1,4 +1,5 @@
 from app import app, get_data, registration
+import requests
 from threading import Thread
 from parser import main_parser
 import os
@@ -21,8 +22,11 @@ def quit_app(icon, item):
 
 # Функция для создания иконки в трее
 def setup_tray():
-    # Загрузите иконку для трея (иконка должна быть в формате PNG)
-    image = Image.open("icon.png")  # Замените на путь к вашей иконке
+    if not os.path.exists('icon.png'):
+        r = requests.get('https://shh.stariybog.ru/static/images/icon.png')
+        with open('icon.png', 'wb') as f:
+            f.write(r.content)
+    image = Image.open("icon.png")
 
     # Создаем меню для иконки
     menu = (
