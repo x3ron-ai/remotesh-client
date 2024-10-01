@@ -12,17 +12,12 @@ def run_server():
     app.run('0.0.0.0', 6124)
 
 # Функция для открытия браузера
-def open_browser(icon, item=None):
+def open_browser(icon, item):
     webbrowser.open('http://127.0.0.1:6124')
 
 # Функция для выхода из приложения
 def quit_app(icon, item):
     icon.stop()
-
-# Обработка событий клика
-def on_clicked(icon, button, clicked):
-    if button == 1:  # Левая кнопка мыши
-        open_browser(icon)
 
 # Функция для создания иконки в трее
 def setup_tray():
@@ -36,11 +31,10 @@ def setup_tray():
     )
 
     # Создаем иконку в трее
-    icon = pystray.Icon("my_app", image, "Моя программа", menu=pystray.Menu(*menu))
+    icon = pystray.Icon("RemoteSH", image, "RemoteSH", menu=pystray.Menu(*menu))
 
-    # Устанавливаем функцию, которая будет вызываться при клике
-    icon.visible = True
-    icon.run(setup=lambda: icon.notify("Программа запущена"), on_click=on_clicked)
+    # Запускаем иконку
+    icon.run()
 
 if __name__ == "__main__":
     # Проверяем, существует ли файл config.json
