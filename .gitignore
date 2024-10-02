@@ -7,7 +7,7 @@ pyvenv.cfg
 dist/
 build/
 .git/
-
+*.spec
 
 # Исключение
 !static/scripts/
