@@ -2,8 +2,12 @@ __pycache__
 *.json
 Include/
 Lib/
-Scripts/
+./Scripts/
 pyvenv.cfg
 dist/
 build/
 .git/
+
+
+# Исключение
+!static/scripts/
