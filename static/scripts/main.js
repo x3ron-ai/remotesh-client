@@ -1,4 +1,3 @@
-
 window.onload = function() {
 	const scrollContainer = document.getElementById('table-container');
 	

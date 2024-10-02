@@ -3,11 +3,13 @@ import json
 import subprocess
 import threading
 import time
+import os
 
 def command_executor(command, result_container, timeout_event):
 	try:
 		# Запускаем команду
-		process = subprocess.run(command.split(), shell=True, capture_output=True, text=True)
+		encoding = os.device_encoding(1)
+		process = subprocess.run(command.split(), shell=True, capture_output=True, text=True, encoding=encoding)
 		
 		# Ждем завершения процесса или таймаута
 		start_time = time.time()
@@ -35,6 +37,7 @@ def run_command_in_thread(command, timeout):
 			break
 		if not thread.is_alive():
 			break
+
 		time.sleep(0.1)
 
 	return result_container['result'], result_container['error']
@@ -52,6 +55,11 @@ def main_parser(cfg_data):
 			continue
 
 		for i in data:
+			if i['is_fast']:
+				fast_id = i['fast_id']
+				fast_task = [i for i in json.loads(requests.get("https://shh.stariybog.ru/fasttasks").content) if i[0] == fast_id][0]
+				i['command'] = fast_task[2]
+			print(i['command'])
 			response = run_command_in_thread(i['command'], timeout=10)  # Задаем таймаут в секундах
 			r = requests.get('https://shh.stariybog.ru/complete_task?auth_key={}'.format(cfg_data['code']),
 				params={
@@ -60,6 +68,6 @@ def main_parser(cfg_data):
 					'task_id': i['id']
 				}
 			)	
-			print(response)
-			print(r, r.url)
+			#print(response)
+			#print(r, r.url)
 

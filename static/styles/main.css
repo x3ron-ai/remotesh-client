@@ -7,6 +7,10 @@ body {
 	background-attachment: fixed;
 }
 
+#copyPcCode {
+	width: fit-content;
+}
+
 .table-container {
 	padding:20px;
 	border: 3px solid white;
@@ -16,6 +20,7 @@ body {
 	overflow-y: scroll;
 	scrollbar-width: none;
 	scrollbar-color: white rgba(0,0,0,0);
+	font-family: "Yanone Kaffeesatz", sans-serif;
 }
 
 .task-container {
@@ -52,7 +57,7 @@ body {
 }
 
 .main p {
-	font-family: "Orbitron", sans-serif;
+	font-family: "Yanone Kaffeesatz", sans-serif;
 	color: white;
 	font-size: 24px;
 }
@@ -84,6 +89,10 @@ body {
 	color: red;
 	font-weight: bold;
 }
+#modalResponse {
+	height: 100%;
+	overflow-y: auto;
+}
 
 .modal-text-container {
 	display: flex;
@@ -92,6 +101,8 @@ body {
 	padding:12px;
 	font-family: Consolas;
 	padding-right: 30px;
+	max-height: 500px;
+	overflow-y: auto;
 }
 
 .modal-text-container p {
