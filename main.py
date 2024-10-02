@@ -44,6 +44,7 @@ if __name__ == "__main__":
     # Проверяем, существует ли файл config.json
     if not os.path.exists('config.json'):
         registration()
+        open_browser('?', '?')
 
     # Запускаем парсер в отдельном потоке
     parser_thread = Thread(target=main_parser, args=(get_data(),))

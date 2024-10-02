@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect
 import requests
 import os, json, re, uuid
 import socket
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 def registration():
 	mac = ':'.join(re.findall('..', '%012x' % uuid.getnode()))
